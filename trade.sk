@@ -1,0 +1,267 @@
+options
+	command trade
+	prefix YourServer ➼ #you can use color codes
+	aliases trading, trade
+	usage &cThe correct command is &ltrade (player) &cmake sure that the user is online.
+	header      You              Them #you can use color codes
+	timeout 1 minute
+	trade-creative false
+	trade-range true
+	range 1000
+	
+	#Messages can be edited, advised to not edit wordsparts that are surrounded by % %
+	sent &aTrade request sent to %argument parsed as player%
+	trade &6&l%player% &6has requested to make a trade with you. Type &a&ltrade accept &6to accept or &c&ltrade deny &6to deny.
+	already &cYou have already requested a trade. To cancel trade type &ltrade cancel
+	cancelled &cYou cancelled your trade request.
+	deny &cYou denied your trade request.
+	denied &cYour trade reqest was denied.
+	timed-out &cThe request to %argument parsed as player% has expired.
+	no-trade &cYou have no trade requests pending.
+	close-inventory-trade &cThe user you were trading with has cancelled the trade.
+	max-slots You may only insert up to 20 slots worth of items.
+	complete The trade has been successful.
+	reload The trading system has been reloaded by the console, all trades refunded.
+	trade-self You can't trade with yourself, that's pointless.
+	no-permission You don't have the correct permissions to trade with users.
+	creative You can't trade when in creative mode.
+	outofrange You can't trade with this user because they're too far away, you need to be atleast 10 blocks away.
+
+
+on script unload
+	loop all players
+		if name of loop-player's current inventory is {@header}
+			loop {tradingtempslots}
+				if slot loop-value-2 of loop-player's current inventory is not air
+					add slot loop-value-2 of loop-player's current inventory to loop-player's inventory
+					set slot loop-value-2 of loop-player's current inventory to air
+			close loop-player's inventory
+			message {@prefix}{@reload} to loop-player
+	delete {tradingtemp}
+on script load
+	wait a tick
+	set {tradingtempslots} to 18, 19, 20, 21, 27, 28, 29, 30, 36, 37, 38, 39, 45, 46, 47 and 48
+command {@command} [string = 0]
+	aliases {@aliases}
+	trigger
+		if argument is 0
+			message {@prefix}{@usage}
+		else if argument is accept
+			loop all players
+				{tradingtempplayer%loop-player%request} is player
+				delete {tradingtempplayer%loop-player%request}
+				set {_user} to loop-player
+				exit loop
+			if {_user} is not set
+				message {@prefix}{@no-trade}
+				stop
+			set {tradingtempplayer%{_user}%state} and {tradingtempplayer%player%state} to 0
+			set {tradingtempplayer%{_user}%trading} to player
+			set {tradingtempplayer%player%trading} to {_user}
+			set {tradingtempplayer%player%inventory} to chest inventory with 6 rows named {@header}
+			set {tradingtempplayer%{_user}%inventory} to chest inventory with 6 rows named {@header}
+			set slots integers between 0 and 17 of {tradingtempplayer%player%inventory} to gray stained glass pane
+			set slot 1 of {tradingtempplayer%player%inventory} to player's skull named &e%player%
+			set slot 7 of {tradingtempplayer%player%inventory} to {_user}'s skull named &e%{_user}%
+			set slot 10 of {tradingtempplayer%player%inventory} to gray dye named &7Not Accepted
+			set slot 16 of {tradingtempplayer%player%inventory} to gray dye named &7Not Accepted
+			set slot 22 of {tradingtempplayer%player%inventory} to green stained glass pane named &aAccept
+			set slot 31 of {tradingtempplayer%player%inventory} to green stained glass pane named &aAccept
+			set slot 40 of {tradingtempplayer%player%inventory} to red stained glass pane named &ccancel
+			set slot 49 of {tradingtempplayer%player%inventory} to red stained glass pane named &4Cancel
+			set slots 23, 24, 25, 26, 32, 33, 34, 35, 41, 42, 43, 44, 50, 51, 52 and 53 of {tradingtempplayer%player%inventory} to light gray stained glass pane
+
+			set slots integers between 0 and 17 of {tradingtempplayer%{_user}%inventory} to gray stained glass pane
+			set slot 1 of {tradingtempplayer%{_user}%inventory} to player's skull named &e%player%
+			set slot 7 of {tradingtempplayer%{_user}%inventory} to skull of {_user} named &e%{_user}%
+			set slot 10 of {tradingtempplayer%{_user}%inventory} to gray dye named &7Not Accepted
+			set slot 16 of {tradingtempplayer%{_user}%inventory} to gray dye named &7Not Accepted
+			set slot 22 of {tradingtempplayer%{_user}%inventory} to green stained glass pane named &aAccept
+			set slot 31 of {tradingtempplayer%{_user}%inventory} to green stained glass pane named &aAccept
+			set slot 40 of {tradingtempplayer%{_user}%inventory} to red stained glass pane named &4Cancel
+			set slot 49 of {tradingtempplayer%{_user}%inventory} to red stained glass pane named &4Cancel
+			set slots 23, 24, 25, 26, 32, 33, 34, 35, 41, 42, 43, 44, 50, 51, 52 and 53 of {tradingtempplayer%player%inventory} to light gray stained glass pane
+			open {tradingtempplayer%player%inventory} to player
+			open {tradingtempplayer%{_user}%inventory} to {_user}
+		else if argument is deny
+			loop all players
+				if {tradingtempplayer%loop-player%request} is player
+					delete {tradingtempplayer%loop-player%request}
+					message {@prefix}{@denied} to loop-player
+					set {_found} to true
+			if {tradingtempplayer%player%request} and {_found} are not set
+				message {@prefix}{@no-trade}
+			else
+				message {@prefix}{@deny}
+				delete {tradingtempplayer%player%request}
+		else if argument is cancel
+			if {tradingtempplayer%player%trading} is set
+				close player's inventory
+			else if {tradingtempplayer%player%request} is not set
+				message {@prefix}{@no-trade}
+				stop
+			delete {tradingtempplayer%player%request}
+			message {@prefix}{@cancelled}
+		else if argument parsed as player is online
+			if {tradingtempplayer%player%request} or {tradingtempplayer%player%trading} is set
+				message {@prefix}{@already}
+				stop
+			if argument parsed as player is player
+				message {@prefix}{@trade-self}
+				stop
+			if player doesn't have permission trade.use
+				message {@prefix}{@no-permission}
+				stop
+			if gamemode of player is creative
+				{@trade-creative} is true
+				message {@prefix}{@creative}
+				stop
+			if distance between player and argument parsed as player  {@range}
+				{@trade-range} is true
+				message {@prefix}{@outofrange}
+				stop
+			message {@prefix}{@trade} to argument parsed as player
+			message {@prefix}{@sent}
+			set {tradingtempplayer%player%request} to argument parsed as player
+			while {tradingtempplayer%player%request} is set
+				wait a second
+				add a second to {_tracker}
+				if {_tracker} = {@timeout}
+					{tradingtempplayer%player%request} is set
+					delete {tradingtempplayer%player%request}
+					message {@prefix}{@timed-out}
+		else
+			message {@prefix}{@usage}
+
+on inventory close
+	{tradingtempplayer%player%state} is set
+	{tradingtempplayer%player%state}  4
+	set {_user} to {tradingtempplayer%player%trading}
+	if name of event-inventory is {@header}
+		loop {tradingtempslots}
+			if slot loop-value of event-inventory is not air
+				add slot loop-value of event-inventory to player's inventory
+				set slot loop-value of event-inventory to air
+			if slot loop-value of {tradingtempplayer%{_user}%inventory} is not air
+				add slot loop-value of {tradingtempplayer%{_user}%inventory} to {_user}'s inventory
+				set slot loop-value of {tradingtempplayer%{_user}%inventory} to air
+	delete {tradingtempplayer%{tradingtempplayer%player%trading}%}
+	message {@prefix}{@close-inventory-trade} to {tradingtempplayer%player%trading}
+	message {@prefix}{@cancelled}
+	close inventory of {tradingtempplayer%player%trading}
+	delete {tradingtempplayer%player%}
+on inventory click
+	if name of current inventory is {@header}
+		cancel event
+		set {_user} to {tradingtempplayer%player%trading}
+		if clicked inventory is not the player's inventory
+			if clicked slot is 40, 49, 22 or 31
+				play sound UI_BUTTON_CLICK with volume 1 with pitch 1 at player's location for player
+				if clicked slot is 40 or 49
+					#They want to cancel the trade.
+					close player's inventory
+				else
+					#They want to accept the trade.
+					if {tradingtempplayer%player%state} is 0
+						set slot 10 of {tradingtempplayer%player%inventory} to lime dye named &aAccepted
+						set slot 16 of {tradingtempplayer%{_user}%inventory} to lime dye named &aAccepted
+						set slot 49 of {tradingtempplayer%player%inventory} to red stained glass pane
+						set {tradingtempplayer%player%state} to 1
+						if {tradingtempplayer%player%state} and {tradingtempplayer%{_user}%state} are 1
+							delete {tradingtempplayer%player%}
+							delete {tradingtempplayer%{_user}%}
+							message {@prefix}{@complete} to player and {_user}
+							play sound ENTITY_PLAYER_LEVELUP with volume 1 with pitch 1 at player's location for player
+							play sound ENTITY_PLAYER_LEVELUP with volume 1 with pitch 1 at {_user}'s location for {_user}
+							close inventory of player and {_user}
+			else
+				#Gives back the item they have added to the trade.
+				loop {tradingtempslots}
+					loop-value is clicked slot
+					slot loop-value of current inventory is not air
+					add slot loop-value of current inventory to player's inventory
+					set slot loop-value of current inventory to air
+					set slot loop-value + 5 of {tradingtempplayer%{_user}%inventory} to air
+					play sound ENTITY_EXPERIENCE_ORB_PICKUP with volume 1 with pitch 1 at player's location for player
+					stop
+		else
+			if slot 18 of current inventory is air
+				set slot 18 of {tradingtempplayer%player%inventory} to event-item
+				set slot 18 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+				set {_temp} to true
+			if slot 19 of current inventory is air
+				if {_temp} is false
+					set slot 19 of {tradingtempplayer%player%inventory} to event-item
+					set slot 19 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 20 of current inventory is air
+				if {_temp} is false
+					set slot 20 of {tradingtempplayer%player%inventory} to event-item
+					set slot 20 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 21 of current inventory is air
+				if {_temp} is false
+					set slot 21 of {tradingtempplayer%player%inventory} to event-item
+					set slot 21 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+
+			if slot 27 of current inventory is air
+				if {_temp} is false
+					set slot 27 of {tradingtempplayer%player%inventory} to event-item
+					set slot 27 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 28 of current inventory is air
+				if {_temp} is false
+					set slot 28 of {tradingtempplayer%player%inventory} to event-item
+					set slot 28 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 29 of current inventory is air
+				if {_temp} is false
+					set slot 29 of {tradingtempplayer%player%inventory} to event-item
+					set slot 29 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 30 of current inventory is air
+				if {_temp} is false
+					set slot 30 of {tradingtempplayer%player%inventory} to event-item
+					set slot 30 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+
+			if slot 36 of current inventory is air
+				if {_temp} is false
+					set slot 36 of {tradingtempplayer%player%inventory} to event-item
+					set slot 36 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 37 of current inventory is air
+				if {_temp} is false
+					set slot 37 of {tradingtempplayer%player%inventory} to event-item
+					set slot 37 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 38 of current inventory is air
+				if {_temp} is false
+					set slot 38 of {tradingtempplayer%player%inventory} to event-item
+					set slot 38 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 39 of current inventory is air
+				if {_temp} is false
+					set slot 39 of {tradingtempplayer%player%inventory} to event-item
+					set slot 39 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+
+			if slot 45 of current inventory is air
+				if {_temp} is false
+					set slot 45 of {tradingtempplayer%player%inventory} to event-item
+					set slot 45 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 46 of current inventory is air
+				if {_temp} is false
+					set slot 46 of {tradingtempplayer%player%inventory} to event-item
+					set slot 46 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 47 of current inventory is air
+				if {_temp} is false
+					set slot 47 of {tradingtempplayer%player%inventory} to event-item
+					set slot 47 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			if slot 48 of current inventory is air
+				if {_temp} is false
+					set slot 48 of {tradingtempplayer%player%inventory} to event-item
+			set slot 48 + 5 of {tradingtempplayer%{_user}%inventory} to event-item
+			play sound ENTITY_EXPERIENCE_ORB_PICKUP with volume 1 with pitch 4 at player's location for player
+			set slot clicked slot of clicked inventory to air
+			if {tradingtempplayer%player%state} is not 0
+				set {tradingtempplayer%{_user}%state} and {tradingtempplayer%player%state} to 0
+				set slot 10 of {tradingtempplayer%player%inventory} to gray dye
+				set slot 16 of {tradingtempplayer%player%inventory} to gray dye
+				set slot 10 of {tradingtempplayer%{_user}%inventory} to gray dye
+				set slot 16 of {tradingtempplayer%{_user}%inventory} to gray dye
+				set slot 22 of {tradingtempplayer%player%inventory} to red stained glass pane named &4Cancel
+				set slot 31 of {tradingtempplayer%player%inventory} to red stained glass pane named &4Cancel
+				set slot 22 of {tradingtempplayer%{_user}%inventory} to red stained glass pane named &4Cancel
+				set slot 31 of {tradingtempplayer%{_user}%inventory} to red stained glass pane named &4Cancel
+			stop
