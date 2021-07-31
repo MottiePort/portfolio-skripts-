@@ -1,0 +1,857 @@
+
+
+███╗░░░███╗░█████╗░██████╗░███████╗  ██████╗░██╗░░░██╗
+████╗░████║██╔══██╗██╔══██╗██╔════╝  ██╔══██╗╚██╗░██╔╝
+██╔████╔██║███████║██║░░██║█████╗░░  ██████╦╝░╚████╔╝░
+██║╚██╔╝██║██╔══██║██║░░██║██╔══╝░░  ██╔══██╗░░╚██╔╝░░
+██║░╚═╝░██║██║░░██║██████╔╝███████╗  ██████╦╝░░░██║░░░
+╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═════╝░╚══════╝  ╚═════╝░░░░╚═╝░░░
+
+███╗░░░███╗░█████╗░████████╗████████╗██╗███████╗░░░██╗░██╗░██████╗░███████╗███████╗██████╗░
+████╗░████║██╔══██╗╚══██╔══╝╚══██╔══╝██║██╔════╝██████████╗╚════██╗██╔════╝╚════██║╚════██╗
+██╔████╔██║██║░░██║░░░██║░░░░░░██║░░░██║█████╗░░╚═██╔═██╔═╝░░███╔═╝██████╗░░░░░██╔╝░█████╔╝
+██║╚██╔╝██║██║░░██║░░░██║░░░░░░██║░░░██║██╔══╝░░██████████╗██╔══╝░░╚════██╗░░░██╔╝░░╚═══██╗
+██║░╚═╝░██║╚█████╔╝░░░██║░░░░░░██║░░░██║███████╗╚██╔═██╔══╝███████╗██████╔╝░░██╔╝░░██████╔╝
+╚═╝░░░░░╚═╝░╚════╝░░░░╚═╝░░░░░░╚═╝░░░╚═╝╚══════╝░╚═╝░╚═╝░░░╚══════╝╚═════╝░░░╚═╝░░░╚═════╝░
+do NOT claim this file to be yours under any circumstances!!!
+
+options:
+# DO NOT CHANGE AT ALL
+	version: 1.5
+# DO NOT CHANGE AT ALL
+
+	
+	
+# MUST BE A VALID MINECRAFT ITEM OR IT WILL NOT WORK AT ALL
+	fundip: sugar
+	herseys: clay brick
+	milkduds: cocoa beans
+	bubblegum: pink dye
+	caramelapple: apple
+	lollipop: Nether wart
+	laffytaffy: glistering melon
+	jawbreaker: magma cream
+	jellybeans: pumpkin seeds
+	nutterbutter: rabbit foot
+	pepsi: water bottle
+	lemonheads: yellow dye
+	candycorn: carrot
+	whitechocolate: ghast tear
+	doritos: prismarine shard
+#	Use %arg-2% for player and %arg-3% for candy name
+	givemessage: &aGiven %arg-2% 1 %arg-3%
+	guiname: &c&lCandy
+	noperms: &cNo Perms
+#	MUST BE A CORRECT SOUND OR IT WILL NOT WORK
+	sound: ENTITY_PLAYER_BURP
+
+command /warp:
+	aliases: /warps
+	trigger:
+		wait 2 ticks
+		open chest with 3 rows named "&7Enter Server Prefix &bWarps" to player
+		wait 3 ticks
+		format slot 0 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 1 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 2 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 3 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 4 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 5 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 6 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 7 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 8 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+		format slot 9 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 10 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 11 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 12 of player with golden sword named "&e&lPvP" with lore "&dClick to go to pvp" to run [make player execute command "/pvp"]
+		format slot 13 of player with yellow bed named "&e&lSpawn" with lore "&dClick to go to spawn" to run [make player execute command "/spawn"]
+		format slot 14 of player with red stained glass named "&e&lCrates" with lore "&dClick to go to crates" to run [make player execute command "/crates"]
+		format slot 15 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 16 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 17 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+#--------------------------------------------------------------------------------------------------------------------------------------------------------
+		format slot 18 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 19 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 20 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 21 of player with yellow Stained Glass Pane named "&f&l " to be unstealable
+		format slot 22 of player with light blue stained glass pane named "&f&l " to be unstealable
+		format slot 23 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 24 of player with light blue Stained Glass Pane named "&f&l " to be unstealable
+		format slot 25 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+		format slot 26 of player with magenta Stained Glass Pane named "&f&l " to be unstealable
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+command /setcrate:
+    permission: set.spawn 
+    permission message: &cYou cannot set spawn!
+    trigger:
+        set {crates} to player's location
+        send "&e&lSUCCESS! &7You have set spawn to &b%{spawn}%"
+
+command /crates:
+    trigger:
+        teleport player to {crates}
+
+command /setpvp:
+    permission: set.spawn 
+    permission message: &cYou cannot set spawn!
+    trigger:
+        set {pvp} to player's location
+        send "&e&lSUCCESS! &7You have set spawn to &b%{pvp}%"
+
+#------------------------------------------------------------------------------------------------------------------------
+
+on inventory click:
+	if cursor slot of player is book:
+		if name of cursor slot of player is "&dUnbreaking III":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Unbreaking III":
+					cancel the event
+					enchant event-slot with Unbreaking 3
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dUnbreaking V":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Unbreaking V":
+					cancel the event
+					enchant event-slot with Unbreaking 5
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dUnbreaking X":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Unbreaking X":
+					cancel the event
+					enchant event-slot with Unbreaking 10
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+
+on inventory click:
+	if cursor slot of player is book:
+		if name of cursor slot of player is "&dKnockback I":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Knockback I":
+					cancel the event
+					enchant event-slot with knockback
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dKnockback II":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Knockback II":
+					cancel the event
+					enchant event-slot with knockback 2
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dKnockback III":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Knockback III":
+					cancel the event
+					enchant event-slot with knockback 3
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+
+on inventory click:
+	if cursor slot of player is book:
+		if name of cursor slot of player is "&dFire Aspect I":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Fire Aspect I":
+					cancel the event
+					enchant event-slot with Fire Aspect
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dFire Aspect II":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Fire Aspect II":
+					cancel the event
+					enchant event-slot with Fire Aspect 2
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dFire Aspect III":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Fire Aspect III":
+					cancel the event
+					enchant event-slot with Fire Aspect 3
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+
+on inventory click:
+	if cursor slot of player is book:
+		if name of cursor slot of player is "&dLooting III":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Looting III":
+					cancel the event
+					enchant event-slot with Looting 3
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dLooting V":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Looting V":
+					cancel the event
+					enchant event-slot with Looting 5
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dLooting X":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Looting X":
+					cancel the event
+					enchant event-slot with Looting 10
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+
+on inventory click:
+	if cursor slot of player is book:
+		if name of cursor slot of player is "&dMending I":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Mending I":
+					cancel the event
+					enchant event-slot with mending
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dMending II":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Mending II":
+					cancel the event
+					enchant event-slot with mending 2
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+		if name of cursor slot of player is "&dMending III":
+			if event-slot is diamond sword:
+				if lore of event-slot doesn't contain "Mending III":
+					cancel the event
+					enchant event-slot with mending 3
+					set cursor slot of player to air
+					send "&aSuccess!" to the player
+				else:
+					send "&cYou already have this enchant"
+
+#------------------------------------------------------------------------------------------------------------------------
+
+command /pvp:
+    trigger:
+        teleport player to {pvp}
+
+command /teststone:
+	permission: *
+	trigger:
+		give player stone with lore "test"
+
+
+command /PvPShop:
+	trigger:
+		wait 2 ticks
+		open chest with 1 rows named "&7Enter Server Prefix &bPvPShop" to player
+		wait 3 ticks
+		format slot 1 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 0 of player with barrier named "&c&lBack" to run [make player execute command "/shop"] 
+		format slot 2 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 3 of player with golden helmet named "&f&lArmor" to run [make player execute command "/armor"]
+		format slot 4 of player with golden sword named "&f&lSwords" to run [make player execute command "/swords"]
+		format slot 5 of player with enchanted golden apple named "&f&lUtilities" to run [make player execute command "/utilities"]
+		format slot 6 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 7 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 8 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+command /armor:
+	trigger:
+		wait 2 ticks
+		open chest with 1 rows named "&7Enter Server Prefix &bArmor" to player
+		wait 3 ticks
+		format slot 0 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 1 of player with barrier named "&cBack" to run [make player execute command "pvpshop"]
+		format slot 2 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 3 of player with diamond helmet named "&bDiamond Armor" with lore "&7$200" to run [make player execute command "ar1"]
+		format slot 4 of player with glowing diamond helmet named "&bDiamond Armor &7&l| &dProt I" with lore "&7$1.000" to run [make player execute command "ar2"]
+		format slot 5 of player with glowing diamond helmet named "&bDiamond Armor &7&l| &dProt II" with lore "&7$5.000" to run [make player execute command "ar3"]
+		format slot 6 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 7 of player with sunflower named "&e%player's balance%" to be unstealable
+		format slot 8 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+command /ar1:
+	trigger:
+		if player's balance is less than 200:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 200 from player's balance
+			give player Diamond helmet
+			give player diamond chestplate
+			give player diamond leggings
+			give player diamond boots
+			send "&eYou bought &bDiamond Armor" to player
+
+command /ar2:
+	trigger:
+		if player's balance is less than 1000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 1000 from player's balance
+			give player Diamond helmet of protection
+			give player diamond chestplate of protection
+			give player diamond leggings of protection
+			give player diamond boots of protection
+			send "&eYou bought &bDiamond Armor &f&l| &dProt I" to player
+
+command /ar3:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player Diamond helmet of protection 2
+			give player diamond chestplate of protection 2
+			give player diamond leggings of protection 2
+			give player diamond boots of protection 2
+			send "&eYou bought &bDiamond Armor &f&l| &dProt II" to player
+
+command /swords:
+	trigger:
+		wait 2 ticks
+		open chest with 5 rows named "&7Enter Server Prefix &bSwords" to player
+		wait 3 ticks
+		format slot 0 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 1 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 2 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 3 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 4 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 5 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 6 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 7 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 8 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 9 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 10 of player with diamond sword named "&bDiamond Sword" with lore "&7$200" to run [make player execute command "sw1"]
+		format slot 11 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 12 of player with glowing book named "&cUnbreaking III" with lore "&75.000" to run [make player execute command "ub1"]
+		format slot 13 of player with glowing book named "&cKnockback I" with lore "&75.000" to run [make player execute command "kb1"]
+		format slot 14 of player with glowing book named "&cFire Aspect I" with lore "&75.000" to run [make player execute command "fi1"]
+		format slot 15 of player with glowing book named "&cLooting III" with lore "&715.000" to run [make player execute command "lo1"]
+		format slot 16 of player with glowing book named "&cMending I" with lore "&725.000" to run [make player execute command "me1"]
+		format slot 17 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 18 of player with barrier named "&4Back" to run [make player execute command "pvpshop"]
+		format slot 19 of player with diamond sword named "&bDiamond Sword &f&l| &dSharpness I" with lore "&7$1000" to run [make player execute command "sw2"]
+		format slot 20 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 21 of player with glowing book named "&cUnbreaking V" with lore "&710.000" to run [make player execute command "ub2"]
+		format slot 22 of player with glowing book named "&cKnockback II" with lore "&710.000" to run [make player execute command "kb2"]
+		format slot 23 of player with glowing book named "&cFire Aspect II" with lore "&720.000" to run [make player execute command "fi2"]
+		format slot 24 of player with glowing book named "&cLooting V" with lore "&725.000" to run [make player execute command "lo2"]
+		format slot 25 of player with glowing book named "&cMending II" with lore "&750.000" to run [make player execute command "me2"]
+		format slot 26 of player with sunflower named "&e%player's balance%" to be unstealable
+
+		format slot 27 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 28 of player with diamond sword named "&bDiamond Sword &f&l| &dSharpness III" with lore "&7$5000" to run [make player execute command "sw3"]
+		format slot 29 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 30 of player with glowing book named "&cUnbreaking X" with lore "&750.000" to run [make player execute command "ub3"]
+		format slot 31 of player with glowing book named "&cKnockback III" with lore "&715.000" to run [make player execute command "kb3"]
+		format slot 32 of player with glowing book named "&cFire Aspect III" with lore "&740.000" to run [make player execute command "fi3"]
+		format slot 33 of player with glowing book named "&cLooting X" with lore "&750.000" to run [make player execute command "lo3"]
+		format slot 34 of player with glowing book named "&cMending III" with lore "&775.000" to run [make player execute command "me3"]
+		format slot 35 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 36 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 37 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 38 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 39 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 40 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 41 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 42 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 43 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 44 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+command /sw1:
+	trigger:
+		if player's balance is less than 200:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 200 from player's balance
+			give player diamond sword
+			send "&eYou bought &bDiamond sword" to player
+
+command /sw2:
+	trigger:
+		if player's balance is less than 1000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 1000 from player's balance
+			give player diamond sword of sharpness
+			send "&eYou bought &bDiamond sword" to player
+
+command /sw3:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player diamond sword of sharpness 3
+			send "&eYou bought &bDiamond sword" to player
+
+command /ub1:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player glowing book named "&dUnbreaking III" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dUnbreaking III" to player
+
+command /ub2:
+	trigger:
+		if player's balance is less than 10000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 10000 from player's balance
+			give player glowing book named "&dUnbreaking V" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dUnbreaking V" to player
+
+command /ub3:
+	trigger:
+		if player's balance is less than 50000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 50000 from player's balance
+			give player glowing book named "&dUnbreaking X" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dUnbreaking X" to player
+
+command /kb1:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player glowing book named "&dKnockback I" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dKnockback I" to player
+
+command /kb2:
+	trigger:
+		if player's balance is less than 10000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 10000 from player's balance
+			give player glowing book named "&dKnockback II" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dKnockback II" to player
+
+command /kb3:
+	trigger:
+		if player's balance is less than 15000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 15000 from player's balance
+			give player glowing book named "&dKnockback III" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dKnockback III" to player
+
+command /fi1:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player glowing book named "&dFire Aspect I" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dFire Aspect I" to player
+
+command /fi2:
+	trigger:
+		if player's balance is less than 20000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 20000 from player's balance
+			give player glowing book named "&dFire Aspect II" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dFire Aspect II" to player
+
+command /fi3:
+	trigger:
+		if player's balance is less than 40000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 40000 from player's balance
+			give player glowing book named "&dFire Aspect III" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dFire Aspect III" to player
+
+command /lo1:
+	trigger:
+		if player's balance is less than 15000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 15000 from player's balance
+			give player glowing book named "&dLooting III" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dLooting III" to player
+
+command /lo2:
+	trigger:
+		if player's balance is less than 25000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 25000 from player's balance
+			give player glowing book named "&dLooting V" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dLooting V" to player
+
+command /lo3:
+	trigger:
+		if player's balance is less than 50000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 50000 from player's balance
+			give player glowing book named "&dLooting X" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dLooting X" to player
+
+command /me1:
+	trigger:
+		if player's balance is less than 25000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 25000 from player's balance
+			give player glowing book named "&dMending I" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dMending I" to player
+
+command /me2:
+	trigger:
+		if player's balance is less than 50000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 50000 from player's balance
+			give player glowing book named "&dMending II" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dMending II" to player
+
+command /me3:
+	trigger:
+		if player's balance is less than 75000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 75000 from player's balance
+			give player glowing book named "&dMending III" with lore "&5Drag and Drop on Sword"
+			send "&eYou bought &dMending III" to player
+
+command /utilities:
+	trigger:
+		wait 2 ticks
+		open chest with 4 rows named "&7Enter Server Prefix &bSwords" to player
+		wait 3 ticks
+		format slot 0 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 1 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 2 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 3 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 4 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 5 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 6 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 7 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 8 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 9 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 10 of player with glowing bow named "&8&lCompound Bow" with lore "&7More damage" and "&725.000" to run [make player execute command "ut1"]
+		format slot 11 of player with arrow named "&7&l32x Arrow" with lore "&7200" to run [make player execute command "ut2"]
+		format slot 12 of player with cookie named "&e&lCandy" with lore "&7&lClick to buy our candy" and "&71000" to run [make player execute command "candy"]
+		format slot 13 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 14 of player with golden apple named "&6Golden Apple" with lore "&7500" to run [make player execute command "ut3"]
+		format slot 15 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 16 of player with light gray wool named "&e10x Disappearing Wool" with lore "&73 seconds" and "&71000" to run [make player execute command "ut4"]
+		format slot 17 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 18 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 19 of player with crossbow named "&8Crossbow" with lore "&75.000" to run [make player execute command "ut5"]
+		format slot 20 of player with fishing rod named "&f&lFishing Rod" with lore "&71000" to run [make player execute command "ut6"]
+		format slot 21 of player with paper named "&f&lShield" with lore "&71000" to run [make player execute command "ut7"]
+		format slot 22 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 23 of player with cooked porkchop named "&8&l64x Pork" with lore "&7200" to run [make player execute command "ut8"]
+		format slot 24 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 25 of player with white wool named "&e10x Disappearing Wool" with lore "&75 seconds" and "&75000" to run [make player execute command "ut9"]
+		format slot 26 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+		format slot 27 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 28 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 29 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 30 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 31 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 32 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 33 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 34 of player with yellow stained glass pane named "&f&l " to be unstealable
+		format slot 35 of player with yellow stained glass pane named "&f&l " to be unstealable
+
+command /ut2:
+	trigger:
+		if player's balance is less than 200:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 200 from player's balance
+			give player 32 arrow
+			send "&eYou bought a &732x Arrow" to player
+
+command /ut3:
+	trigger:
+		if player's balance is less than 500:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 500 from player's balance
+			give player golden apple
+			send "&eYou bought a &eGolden Apple" to player
+
+command /ut4:
+	trigger:
+		if player's balance is less than 1000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 1000 from player's balance
+			give player 10 light gray wool
+			send "&eYou bought &7&f10 Light Gray Wool" to player
+
+command /ut5:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player crossbow
+			send "&eYou bought a &eCrossbow" to player
+
+command /ut6:
+	trigger:
+		if player's balance is less than 1000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 1000 from player's balance
+			give player fishing rod
+			send "&eYou bought a Fishing Rod" to player
+
+command /ut7:
+	trigger:
+		if player's balance is less than 1000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 1000 from player's balance
+			give player shield
+			send "&eYou bought a Shield" to player
+
+command /ut8:
+	trigger:
+		if player's balance is less than 200:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 200 from player's balance
+			give player 64 cooked porkchop
+			send "&eYou bought 64x Pork" to player
+
+command /ut9:
+	trigger:
+		if player's balance is less than 5000:
+			send "&7[&c&lError&7] &cInsufficient Funds."
+		else:
+			remove 5000 from player's balance
+			give player 10 white wool
+			send "&eYou bought &f&l10 White Wool" to player
+
+on right click with {@fundip}:
+	player is holding {@fundip} named "&b&lFun &c&lDip"
+	remove 1 {@fundip} from player
+	apply potion of swiftness 3 to player for 5 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@herseys}:
+	player is holding {@herseys} named "&6&lHerseys Bar"
+	remove 1 {@herseys} from player
+	apply potion of slowness 2 to player for 10 seconds
+	apply potion of strength 2 to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@milkduds}:
+	player is holding {@milkduds} named "&6&lMilk Duds"
+	remove 1 {@milkduds} from player
+	apply potion of jump boost 1 to player for 7 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@bubblegum}:
+	player is holding {@bubblegum} named "&d&lBubble Gum"
+	remove 1 {@bubblegum} from player
+	apply potion of weakness 1 to player for 5 seconds
+	apply potion of regeneration 2 to player for 7 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@lollipop}:
+	player is holding {@lollipop} named "&c&lLollipop"
+	remove 1 {@lollipop} from player
+	apply potion of water breathing 1 to player for 10 seconds
+	apply potion of invisibility 1 to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@laffytaffy}:
+	player is holding {@laffytaffy} named "&d&lLaffy&c&lTaffy"
+	remove 1 {@laffytaffy} from player
+	apply potion of resistance 1 to player for 12 seconds
+	apply potion of blindness 1 to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@jawbreaker}:
+	player is holding {@jawbreaker} named "&b&lJawBreaker"
+	remove 1 {@jawbreaker} from player
+	apply potion of strength 1 to player for 10 seconds
+	apply potion of fire resistance to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@jellybeans}:
+	player is holding {@jellybeans} named "&4&lJelly Beans"
+	remove 1 {@jellybeans} from player
+	apply potion of weakness 1 to player for 5 seconds
+	apply potion of jump boost 2 to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+	
+on right click with {@nutterbutter}:
+	player is holding {@nutterbutter} named "&4&lNutter&6&lButter"
+	remove 1 {@nutterbutter} from player
+	apply potion of nausea 1 to player for 6 seconds
+	apply potion of swiftness 3 to player for 10 seconds
+	play "{@sound}" to player at volume 0.2
+
+command /candy [<text>] [<player>] [<text>]:
+	trigger:
+		if player has permission "gen.25":
+			if arg 1 is not set:
+				if arg 2 is not set:
+					if arg 3 is not set:
+						remove 1000 from player's balance
+						wait 2 ticks
+						open chest with 1 rows named "&7Enter Server Prefix &ePick your Candy" to player
+						wait 3 ticks
+						format slot 0 of player with {@fundip} named "&b&lFun &c&lDip" to run [give player 3 {@fundip} named "&b&lFun &c&lDip"]->[make player execute command "utilities"]
+						format slot 1 of player with {@herseys} item named "&6&lHerseys Bar" to run [give player 3 {@herseys} named "&6&lHerseys Bar"]->[make player execute command "utilities"]
+						format slot 2 of player with {@milkduds} named "&6&lMilk Duds" to run [give player 3 {@milkduds} named "&6&lMilk Duds"]->[make player execute command "utilities"]
+						format slot 3 of player with {@bubblegum} named "&d&lBubble Gum" to run [give player 3 {@bubblegum} named "&d&lBubble Gum"]->[make player execute command "utilities"]
+						format slot 4 of player with {@lollipop} named "&c&lLollipop" to run [give player 3 {@lollipop} named "&c&lLollipop"]->[make player execute command "utilities"]
+						format slot 5 of player with {@nutterbutter} named "&4&lNutter&6&lButter" to run [give player 1 {@nutterbutter} named "&4&lNutter&6&lButter"]->[make player execute command "utilities"]
+						format slot 6 of player with {@laffytaffy} named "&d&lLaffy&c&lTaffy" to run [give player 3 {@laffytaffy} named "&d&lLaffy&c&lTaffy"]->[make player execute command "utilities"]
+						format slot 7 of player with {@jawbreaker} named "&b&lJawBreaker" to run [give player 3 {@jawbreaker} named "&b&lJawBreaker"]->[make player execute command "utilities"]
+						format slot 8 of player with {@jellybeans} named "&4&lJelly Beans" to run [give player 3 {@jellybeans} named "&4&lJelly Beans"]->[make player execute command "utilities"]
+
+on death:
+	cancel event
+	wait 3 tick
+	send title "&c&lYou Died" to player for 3 seconds
+	teleport player to {pvp}
+
+on place of a white wool:
+	wait 2 second
+	set block to light gray wool
+	wait 1 second
+	set block to gray wool
+	wait 1 second
+	set block to black wool
+	wait 1 second
+	set block to air
+
+on place of a light gray wool:
+	wait 1 second
+	set block to gray wool
+	wait 1 second
+	set block to black wool
+	wait 1 second
+	set block to air
+
+on block place:
+	if player doesn't have permission "*":
+		if player is in world "flatworld":
+			if block is not light gray wool:
+				if block is not white wool:
+					cancel event
+					send "&cYou can only place white or light gray wool here!"
+
+command /ut1:
+	trigger:
+		if player's balance >= 25:
+			give player bow of power 5 named "&8&lCompound Bow"
+			remove 25000 from player's balance
+
+on death of player:
+	if {ks.%attacker%} is not set:
+		set {ks.%attacker%} to 0
+		add 1 to {ks.%attacker%}
+		set {ks.%victim%} to 0
+	else:
+		add 1 to {ks.%attacker%}
+		set {ks.%victim%} to 0
+		add 500 * {multipvp::%player%} to attacker's balance
+		set {_n} to a random number between 100 and 1000
+		add {_n} * {multipvp::%player%} to xp of player
+		if attacker is player:
+			send "&c&lYou got killed by %attacker%" to victim
+			send "&c&lYou killed %victim%" to attacker
+		else:
+			send "&c&lYou drowned in lava dummy" to victim
+		
+on death of player:
+	if attacker is a player:
+		if {ks.%attacker%} is 10:
+			execute console command "/crate givekey %attacker% common 1"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c10"
+			
+		if {ks.%attacker%} is 20:
+			execute console command "/crate givekey %attacker% common 5"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c20"
+			
+		if {ks.%attacker%} is 30:			
+			execute console command "/crate givekey %attacker% uncommon 1"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c30"
+					
+		if {ks.%attacker%} is 40:
+			execute console command "/crate givekey %attacker% uncommon 5"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c40"		
+			
+		if {ks.%attacker%} is 50:
+			execute console command "/crate givekey %attacker% odd 1"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c50"
+			
+		if {ks.%attacker%} is 75:
+			execute console command "/crate givekey %attacker% odd 5"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c75"
+			
+		if {ks.%attacker%} is 85:
+			execute console command "/crate givekey %attacker% mythic 1"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c85"
+			
+		if {ks.%attacker%} is 100:
+			execute console command "/crate givekey %attacker% mythic 5"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c100"
+			
+		if {ks.%attacker%} is 115:
+			execute console command "/crate givekey %attacker% spirit 1"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c115"
+			
+		if {ks.%attacker%} is 125:
+			execute console command "/crate givekey %attacker% spirit 3"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c125"
+			
+		if {ks.%attacker%} is 150:
+			execute console command "/crate givekey %attacker% spirit 5"
+			broadcast "&8» &6%attacker% &7has got a killstreak of &c150"
+			
+		if {ks.%attacker%} is 200:
+			give attacker white tulip named "&f&kl&f&lWhite Rose&f&kl" with lore "&f&lEarn more xp and money if this is in your offhand"
+			broadcast "&8» &6%attacker% &7has a 60 killsteak and got a &f&lWhite Rose"
+
+every second:
+	loop all players:
+		if loop-player's inventory contains white tulip:
+			make console execute command "/effect give %loop-player% minecraft:glowing 2 255 true"
+			set {multipvp::%loop-player%} to 2
+			
