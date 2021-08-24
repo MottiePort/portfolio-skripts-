@@ -1,0 +1,74 @@
+
+
+command /money:
+	trigger:
+		give player a blue bed named "&bStars x100" with custom model data 1
+		give player a blue bed named "&bStars x1000" with custom model data 1
+		give player a blue bed named "&bStars x10000" with custom model data 3
+		give player a blue bed named "&bStars x100000" with custom model data 4
+		give player a blue bed named "&bStars x1000000" with custom model data 5
+#inteded used WITH texture pack, not given here
+command /banker:
+    trigger:
+        wait 2 ticks
+        open virtual chest with 6 rows named "&eBanker" to player
+        wait 3 ticks
+        loop 54 times:
+            format gui slot {_g} of player with purple stained glass pane named " " to do nothing
+            add 1 to {_g}
+        format gui slot 0 of player with purple stained glass pane named " " to do nothing
+        format gui slot 38 of player with air named "&e&f" to do nothing
+        format gui slot 39 of player with air named "&e&f" to do nothing
+        format gui slot 40 of player with air named "&e&f" to do nothing
+        format gui slot 41 of player with air named "&e&f" to do nothing
+        format gui slot 42 of player with air named "&e&f" to do nothing
+        format gui slot 43 of player with pink stained glass pane named "&d&lClick to receive money" to do nothing
+
+command /banker1:
+    trigger:
+        wait 2 ticks
+        open virtual chest with 6 rows named "&eBanker " to player
+        wait 3 ticks
+        loop 54 times:
+            format gui slot {_g} of player with purple stained glass pane named " " to do nothing
+            add 1 to {_g}
+        format gui slot 0 of player with purple stained glass pane named " " to do nothing
+        format gui slot 38 of player with blue bed named "&bStars x100" to run function buy(1, 100, player)
+        format gui slot 39 of player with blue bed named "&bStars x1.000" to run function buy(2, 1000, player)
+        format gui slot 40 of player with blue bed named "&bStars x10.000" to run function buy(3, 10000, player)
+        format gui slot 41 of player with blue bed named "&bStars x100.000" to run function buy(4, 100000, player)
+        format gui slot 42 of player with blue bed named "&bStars x1.000.000" to run function buy(5, 1000000, player)
+        format gui slot 43 of player with pink stained glass pane named "&d&lClick to deposit money" to run player command "/banker"
+
+function buy(nbt: number, n: number, p: player):
+	if {_p}'s money >= {_n}:
+		remove {_n} from {_p}'s money
+		give {_p} a blue bed named "&bStars x%{_n}%" with custom model data {_nbt}
+	else:
+		send "&cYou do not have enough money!" to {_p}
+
+on inventory click:
+	name of player's current inventory is "&eBanker"
+	if clicked item is pink stained glass pane:
+		make player execute command "banker1"
+	if player's cursor slot is a blue bed:
+		clicked slot is more than 37
+		clicked slot is less than 43
+		loop 64 times:
+			if player's cursor slot is blue bed named "&bStars x100":
+				remove 1 of player's cursor slot from player's cursor slot
+				add 100 to {_m}
+			if player's cursor slot is blue bed named "&bStars x1000":
+				remove 1 of player's cursor slot from player's cursor slot
+				add 1000 to {_m}
+			if player's cursor slot is blue bed named "&bStars x10000":
+				remove 1 of player's cursor slot from player's cursor slot
+				add 10000 to {_m}
+			if player's cursor slot is blue bed named "&bStars x100000":
+				remove 1 of player's cursor slot from player's cursor slot
+				add 100000 to {_m}
+			if player's cursor slot is blue bed named "&bStars x1000000":
+				remove 1 of player's cursor slot from player's cursor slot
+				add 1000000 to {_m}
+		add {_m} to player's balance
+		message "&9you got &b&l%{_m}% &9stars!"
