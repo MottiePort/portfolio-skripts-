@@ -48,7 +48,7 @@ options
 on script unload
 	loop all players
 		if name of loop-player's current inventory is {@header}
-			loop {tradingtempslots}
+			loop {tradingtempslots::*}
 				if slot loop-value-2 of loop-player's current inventory is not air
 					add slot loop-value-2 of loop-player's current inventory to loop-player's inventory
 					set slot loop-value-2 of loop-player's current inventory to air
@@ -57,7 +57,7 @@ on script unload
 	delete {tradingtemp}
 on script load
 	wait a tick
-	set {tradingtempslots} to 18, 19, 20, 21, 27, 28, 29, 30, 36, 37, 38, 39, 45, 46, 47 and 48
+	set {tradingtempslots::*} to 18, 19, 20, 21, 27, 28, 29, 30, 36, 37, 38, 39, 45, 46, 47 and 48
 command {@command} [string = 0]
 	aliases {@aliases}
 	trigger
@@ -155,7 +155,7 @@ on inventory close
 	{tradingtempplayer%player%state}  4
 	set {_user} to {tradingtempplayer%player%trading}
 	if name of event-inventory is {@header}
-		loop {tradingtempslots}
+		loop {tradingtempslots::*}
 			if slot loop-value of event-inventory is not air
 				add slot loop-value of event-inventory to player's inventory
 				set slot loop-value of event-inventory to air
@@ -193,7 +193,7 @@ on inventory click
 							close inventory of player and {_user}
 			else
 				#Gives back the item they have added to the trade.
-				loop {tradingtempslots}
+				loop {tradingtempslots::*}
 					loop-value is clicked slot
 					slot loop-value of current inventory is not air
 					add slot loop-value of current inventory to player's inventory
